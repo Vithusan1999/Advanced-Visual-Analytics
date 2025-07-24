@@ -1,0 +1,472 @@
+<?xml version="1.0"?>
+<AlteryxDocument yxmdVer="2024.1" RunE2="T">
+  <Nodes>
+    <Node ToolID="2">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+        <Position x="54" y="138" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Passwords />
+          <File OutputFileName="" RecordLimit="" SearchSubDirs="False" FileFormat="8">C:\Users\vithu\Documents\AVA\Exam\Oppgave2\Dataset-2.xls|||`Dataset-2$`</File>
+          <FormatSpecificOptions>
+            <FirstRowData>False</FirstRowData>
+            <NoProgress>False</NoProgress>
+          </FormatSpecificOptions>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>Dataset-2.xls
+Query=`Dataset-2$`</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="Timestamp" size="19" source="File: C:\Users\vithu\Documents\AVA\Exam\Oppgave2\Dataset-2.xls|||`Dataset-2$`" type="DateTime" />
+            <Field name="Lecture/Exercise" size="255" source="File: C:\Users\vithu\Documents\AVA\Exam\Oppgave2\Dataset-2.xls|||`Dataset-2$`" type="V_WString" />
+            <Field name="Session Name" size="255" source="File: C:\Users\vithu\Documents\AVA\Exam\Oppgave2\Dataset-2.xls|||`Dataset-2$`" type="V_WString" />
+            <Field name="Minutes Viewed" source="File: C:\Users\vithu\Documents\AVA\Exam\Oppgave2\Dataset-2.xls|||`Dataset-2$`" type="Double" />
+            <Field name="UserName" size="255" source="File: C:\Users\vithu\Documents\AVA\Exam\Oppgave2\Dataset-2.xls|||`Dataset-2$`" type="V_WString" />
+            <Field name="Study Program" size="255" source="File: C:\Users\vithu\Documents\AVA\Exam\Oppgave2\Dataset-2.xls|||`Dataset-2$`" type="V_WString" />
+            <Field name="Location" size="255" source="File: C:\Users\vithu\Documents\AVA\Exam\Oppgave2\Dataset-2.xls|||`Dataset-2$`" type="V_WString" />
+            <Field name="F8" size="255" source="File: C:\Users\vithu\Documents\AVA\Exam\Oppgave2\Dataset-2.xls|||`Dataset-2$`" type="V_WString" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+    </Node>
+    <Node ToolID="3">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+        <Position x="174" y="138" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <OrderChanged value="False" />
+          <CommaDecimal value="False" />
+          <SelectFields>
+            <SelectField field="F8" selected="False" />
+            <SelectField field="*Unknown" selected="True" />
+          </SelectFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name>Removing_auto_column</Name>
+          <DefaultAnnotationText>Removing_auto_column</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+    </Node>
+    <Node ToolID="4">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
+        <Position x="306" y="138" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <FormulaFields>
+            <FormulaField expression="DateTimeParse([Timestamp], &quot;%Y-%m-%d %H:%M:%S&quot;)&#xA;" field="Parsed_Timestamp" size="1073741823" type="V_WString" enabled="true" />
+            <FormulaField expression="DateTimeFormat([Parsed_Timestamp], &quot;%Y-%m-%d&quot;)&#xA;&#xA;" field="Date" size="1073741823" type="V_WString" enabled="true" />
+            <FormulaField expression="DateTimeFormat([Parsed_Timestamp], &quot;%H:%M:%S&quot;)&#xA;&#xA;&#xA;" field="Time" size="1073741823" type="V_WString" enabled="true" />
+          </FormulaFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name>Parse_Date_and_Time_Components</Name>
+          <DefaultAnnotationText>Parse_Date_and_Time_Components</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
+    </Node>
+    <Node ToolID="5">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.TextToColumns.TextToColumns">
+        <Position x="438" y="138" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Field>UserName</Field>
+          <ErrorHandling>Last</ErrorHandling>
+          <RootName>UserName</RootName>
+          <Delimeters value="-" />
+          <NumFields value="2" />
+          <Flags value="0" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name>Split_Username</Name>
+          <DefaultAnnotationText>Split_Username</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxTextToColumns" />
+    </Node>
+    <Node ToolID="6">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.TextToColumns.TextToColumns">
+        <Position x="546" y="138" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Field>Study Program</Field>
+          <ErrorHandling>Last</ErrorHandling>
+          <RootName>Study Program</RootName>
+          <Delimeters value="&quot;(&quot;" />
+          <NumFields value="2" />
+          <Flags value="0" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name>Split_Study_Program</Name>
+          <DefaultAnnotationText>Split_Study_Program</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxTextToColumns" />
+    </Node>
+    <Node ToolID="8">
+      <GuiSettings>
+        <Position x="690" y="138" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Value name="Check Box (135)">False</Value>
+          <Value name="Check Box (136)">False</Value>
+          <Value name="List Box (11)">"Study Program1"</Value>
+          <Value name="Check Box (84)">False</Value>
+          <Value name="Check Box (117)">False</Value>
+          <Value name="Check Box (15)">True</Value>
+          <Value name="Check Box (109)">False</Value>
+          <Value name="Check Box (122)">False</Value>
+          <Value name="Check Box (53)">False</Value>
+          <Value name="Check Box (58)">False</Value>
+          <Value name="Check Box (70)">False</Value>
+          <Value name="Check Box (77)">False</Value>
+          <Value name="Drop Down (81)">upper</Value>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name>Study_Program1_WhiteSpace</Name>
+          <DefaultAnnotationText>Study_Program1_WhiteSpace</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings Macro="Cleanse.yxmc" />
+    </Node>
+    <Node ToolID="11">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
+        <Position x="858" y="138" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <FormulaFields>
+            <FormulaField expression="IF Contains([Session Name], &quot;Colors (Part 1)&quot;) OR&#xA;   Contains([Session Name], &quot;Colors (Part 2)&quot;) OR&#xA;   Contains([Session Name], &quot;Introduction to Data Visualization - Part 1&quot;) OR&#xA;   Contains([Session Name], &quot;Introduction to Data Visualization - Part 2&quot;) OR&#xA;   Contains([Session Name], &quot;Introduction to Data Visualization - Part 3&quot;) OR&#xA;   Contains([Session Name], &quot;Preattentive attributes - Part 1&quot;) OR&#xA;   Contains([Session Name], &quot;Preattentive attributes - Part 2&quot;) OR&#xA;   Contains([Session Name], &quot;Preattentive attributes - Part 3&quot;) OR&#xA;   Contains([Session Name], &quot;The Details of Information Design - Part 1&quot;) OR&#xA;   Contains([Session Name], &quot;The Details of Information Design - Part 2&quot;) OR&#xA;   Contains([Session Name], &quot;The Details of Information Design - Part 3&quot;) OR&#xA;   Contains([Session Name], &quot;Visual Analytics and Dashboards - Part 1&quot;) OR&#xA;   Contains([Session Name], &quot;Visual Analytics and Dashboards - Part 2&quot;) OR&#xA;   Contains([Session Name], &quot;Visual Perception - Part 1&quot;) OR&#xA;   Contains([Session Name], &quot;Visual Perception - Part 2&quot;) OR&#xA;   Contains([Session Name], &quot;Visual Perception - Part 3&quot;) THEN&#xA;   &quot;Pre_Recorded&quot;&#xA;ELSEIF Contains([Lecture/Exercise], &quot;Visual Analytics&quot;) THEN&#xA;   &quot;Exercise&quot;&#xA;ELSE&#xA;   &quot;Live_Lecture&quot;&#xA;ENDIF&#xA;" field="Session_Type" size="1073741823" type="V_WString" enabled="true" />
+          </FormulaFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name>Categorize_Session_names</Name>
+          <DefaultAnnotationText>Categorize_Session_names</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
+    </Node>
+    <Node ToolID="14">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+        <Position x="966" y="282" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Passwords />
+          <File OutputFileName="" RecordLimit="" SearchSubDirs="False" FileFormat="8">C:\Users\vithu\Documents\AVA\Exam\Oppgave2\Dataset-2.xls|||`Video Length - Prerecorded$`</File>
+          <FormatSpecificOptions>
+            <FirstRowData>False</FirstRowData>
+            <NoProgress>False</NoProgress>
+          </FormatSpecificOptions>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>Dataset-2.xls
+Query=`Video Length - Prerecorded$...</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="Session Name" size="255" source="File: C:\Users\vithu\Documents\AVA\Exam\Oppgave2\Dataset-2.xls|||`Video Length - Prerecorded$`" type="V_WString" />
+            <Field name="Video Length (Minutes)" source="File: C:\Users\vithu\Documents\AVA\Exam\Oppgave2\Dataset-2.xls|||`Video Length - Prerecorded$`" type="Double" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+    </Node>
+    <Node ToolID="18">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.JoinMultiple.JoinMultiple">
+        <Position x="1110" y="150" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <JoinByRecPos value="False" />
+          <JoinFields>
+            <JoinInfo connection="#1">
+              <Field field="Session Name" />
+            </JoinInfo>
+            <JoinInfo connection="#2">
+              <Field field="Session Name" />
+            </JoinInfo>
+          </JoinFields>
+          <CartesianMode>Error</CartesianMode>
+          <OutputJoinOnly value="False" />
+          <SelectConfiguration>
+            <Configuration outputConnection="Output">
+              <OrderChanged value="False" />
+              <CommaDecimal value="False" />
+              <SelectFields>
+                <SelectField field="Input_#2_Session Name" selected="True" rename="Input_#2_Session Name" />
+                <SelectField field="*Unknown" selected="True" />
+              </SelectFields>
+            </Configuration>
+          </SelectConfiguration>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name>Joining_Dataset2_Sheet_with_VideoL_Sheet</Name>
+          <DefaultAnnotationText>Joining_Dataset2_Sheet_with_VideoL_Sheet</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxJoinMultiple" />
+    </Node>
+    <Node ToolID="19">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
+        <Position x="1278" y="150" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <FormulaFields>
+            <FormulaField expression="IIF(ISNULL([Video Length (Minutes)]), 40, [Video Length (Minutes)])&#xA;" field="Video Length (Minutes)" size="8" type="Double" enabled="true" />
+          </FormulaFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name>Default_Video_Length_Nulls</Name>
+          <DefaultAnnotationText>Default_Video_Length_Nulls</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
+    </Node>
+    <Node ToolID="20">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+        <Position x="1422" y="150" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <OrderChanged value="True" />
+          <CommaDecimal value="False" />
+          <SelectFields>
+            <SelectField field="Session Name" selected="False" />
+            <SelectField field="UserName2" selected="True" rename="UserName" type="Int32" size="4" />
+            <SelectField field="Study Program1" selected="True" rename="Study_Program" />
+            <SelectField field="Session_Type" selected="True" />
+            <SelectField field="Lecture/Exercise" selected="True" />
+            <SelectField field="Input_#2_Session Name" selected="True" rename="Session_Name" />
+            <SelectField field="Video Length (Minutes)" selected="True" rename="Video_Length" />
+            <SelectField field="Minutes Viewed" selected="True" rename="Minutes_Viewed" />
+            <SelectField field="Date" selected="True" type="Date" size="10" />
+            <SelectField field="Time" selected="True" type="Time" size="8" />
+            <SelectField field="Location" selected="True" />
+            <SelectField field="Timestamp" selected="False" />
+            <SelectField field="UserName" selected="False" />
+            <SelectField field="Study Program" selected="False" />
+            <SelectField field="UserName1" selected="False" />
+            <SelectField field="Study Program2" selected="False" />
+            <SelectField field="Parsed_Timestamp" selected="False" />
+            <SelectField field="*Unknown" selected="True" />
+            <SelectField field="Minutes_seconds" selected="False" rename="Minutes_Viewed" type="WString" size="16384" />
+          </SelectFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name>Removing_Unwanted_Columns_</Name>
+          <DefaultAnnotationText>Removing_Unwanted_Columns_</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+    </Node>
+    <Node ToolID="23">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Unique.Unique">
+        <Position x="1578" y="150" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <UniqueFields>
+            <Field field="UserName" />
+            <Field field="Study_Program" />
+            <Field field="Session_Type" />
+            <Field field="Lecture/Exercise" />
+            <Field field="Session_Name" />
+            <Field field="Video_Length" />
+            <Field field="Minutes_Viewed" />
+            <Field field="Date" />
+            <Field field="Time" />
+            <Field field="Location" />
+          </UniqueFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name>Check_Duplicate_Rows</Name>
+          <DefaultAnnotationText>Check_Duplicate_Rows</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxUnique" />
+    </Node>
+    <Node ToolID="30">
+      <GuiSettings Plugin="AlteryxSpatialPluginsGui.Summarize.Summarize">
+        <Position x="1662" y="54" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <SummarizeFields>
+            <SummarizeField field="UserName" action="CountNull" rename="CountNull_UserName" />
+            <SummarizeField field="Study_Program" action="CountNull" rename="CountNull_Study_Program" />
+            <SummarizeField field="Session_Type" action="CountNull" rename="CountNull_Session_Type" />
+            <SummarizeField field="Lecture/Exercise" action="CountNull" rename="CountNull_Lecture/Exercise" />
+            <SummarizeField field="Session_Name" action="CountNull" rename="CountNull_Session_Name" />
+            <SummarizeField field="Video_Length" action="CountNull" rename="CountNull_Video_Length" />
+            <SummarizeField field="Minutes_Viewed" action="CountNull" rename="CountNull_Minutes_Viewed" />
+            <SummarizeField field="Date" action="CountNull" rename="CountNull_Date" />
+            <SummarizeField field="Time" action="CountNull" rename="CountNull_Time" />
+            <SummarizeField field="Location" action="CountNull" rename="CountNull_Location" />
+          </SummarizeFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name>Check_Null</Name>
+          <DefaultAnnotationText>Check_Null</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxSpatialPluginsEngine.dll" EngineDllEntryPoint="AlteryxSummarize" />
+    </Node>
+    <Node ToolID="31">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
+        <Position x="1722" y="150" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <File MaxRecords="" FileFormat="25">C:\Users\vithu\Documents\AVA\Exam\Oppgave2\Cleaned_Dataset2_Part2_Exam.xlsx|||Dataset-2</File>
+          <Passwords />
+          <Disable>False</Disable>
+          <FormatSpecificOptions>
+            <PreserveFormat>False</PreserveFormat>
+            <UNCLocal>False</UNCLocal>
+            <SkipFieldNames>False</SkipFieldNames>
+            <OutputOption>Create</OutputOption>
+          </FormatSpecificOptions>
+          <MultiFile value="False" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>Cleaned_Dataset2_Part2_Exam.xlsx
+Query=Dataset-2</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+        <Dependencies>
+          <Implicit />
+        </Dependencies>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
+    </Node>
+  </Nodes>
+  <Connections>
+    <Connection>
+      <Origin ToolID="2" Connection="Output" />
+      <Destination ToolID="3" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="3" Connection="Output" />
+      <Destination ToolID="4" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="4" Connection="Output" />
+      <Destination ToolID="5" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="5" Connection="Output" />
+      <Destination ToolID="6" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="6" Connection="Output" />
+      <Destination ToolID="8" Connection="Input2" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="8" Connection="Output26" />
+      <Destination ToolID="11" Connection="Input" />
+    </Connection>
+    <Connection name="#2">
+      <Origin ToolID="11" Connection="Output" />
+      <Destination ToolID="18" Connection="Input" />
+    </Connection>
+    <Connection name="#1">
+      <Origin ToolID="14" Connection="Output" />
+      <Destination ToolID="18" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="18" Connection="Output" />
+      <Destination ToolID="19" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="19" Connection="Output" />
+      <Destination ToolID="20" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="20" Connection="Output" />
+      <Destination ToolID="23" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="23" Connection="Unique" />
+      <Destination ToolID="30" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="23" Connection="Unique" />
+      <Destination ToolID="31" Connection="Input" />
+    </Connection>
+  </Connections>
+  <Properties>
+    <Memory default="True" />
+    <GlobalRecordLimit value="0" />
+    <TempFiles default="True" />
+    <Annotation on="True" includeToolName="False" />
+    <ConvErrorLimit value="10" />
+    <ConvErrorLimit_Stop value="False" />
+    <CancelOnError value="False" />
+    <DisableBrowse value="False" />
+    <EnablePerformanceProfiling value="False" />
+    <RunWithE2 value="True" />
+    <PredictiveToolsCodePage value="1252" />
+    <DisableAllOutput value="False" />
+    <ShowAllMacroMessages value="False" />
+    <ShowConnectionStatusIsOn value="True" />
+    <ShowConnectionStatusOnlyWhenRunning value="True" />
+    <ZoomLevel value="0" />
+    <LayoutType>Horizontal</LayoutType>
+    <IsTemplate value="False" />
+    <MetaInfo>
+      <NameIsFileName value="True" />
+      <Name>Q2Exam</Name>
+      <Description />
+      <RootToolName />
+      <ToolVersion />
+      <ToolInDb value="False" />
+      <CategoryName />
+      <SearchTags />
+      <Author />
+      <Company />
+      <Copyright />
+      <DescriptionLink actual="" displayed="" />
+      <Example>
+        <Description />
+        <File />
+      </Example>
+      <WorkflowId value="40a17b48-2960-4124-afd7-77fd5dee8355" />
+      <Telemetry>
+        <PreviousWorkflowId value="d4bb8f0b-c5f6-415a-9585-43bbc2aea378" />
+        <OriginWorkflowId value="d4bb8f0b-c5f6-415a-9585-43bbc2aea378" />
+      </Telemetry>
+      <PlatformWorkflowId value="" />
+    </MetaInfo>
+    <Events>
+      <Enabled value="True" />
+    </Events>
+  </Properties>
+</AlteryxDocument>
