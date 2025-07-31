@@ -1,10 +1,13 @@
 # Advanced-Visual-Analytics
 
 **Overview**
+
 This project is part of the Visual Analytics course, aimed at analyzing student video engagement data using Alteryx and Tableau. The objective is to clean and prepare the dataset in Alteryx, and then create insightful dashboards in Tableau to help instructors and course managers understand viewing behaviors and session performance.
 
 **Files**
+
 1. Q2Exam.yxmd (Alteryx Workflow)
+   
 Purpose: Cleans, transforms, and reshapes raw video engagement data.
 
 **Key Operations:**
@@ -20,6 +23,7 @@ Created new attributes (e.g., session type, minutes viewed)
 Ensured tidy data structure compatible with Tableau
 
 2. FinalDashboardingQ2.twbx (Tableau Packaged Workbook)
+   
 Purpose: Visualizes student engagement metrics across sessions, weekdays, and study programs.
 
 **Dashboards Included:**
@@ -33,6 +37,7 @@ Engagement Trends: Shows weekly engagement trends, including pre-recorded vs. li
 Session-Level Insights: Highlights performance of individual sessions.
 
 **How to Use**
+
 Open the Alteryx Workflow:
 
 File: Q2Exam.yxmd
