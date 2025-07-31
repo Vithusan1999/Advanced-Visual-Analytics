@@ -22,6 +22,7 @@ Created new attributes (e.g., session type, minutes viewed)
 
 Ensured tidy data structure compatible with Tableau
 
+
 2. FinalDashboardingQ2.twbx (Tableau Packaged Workbook)
    
 Purpose: Visualizes student engagement metrics across sessions, weekdays, and study programs.
@@ -55,6 +56,7 @@ Review the interactive dashboards and apply filters (e.g., weekday, study progra
 The workbook is pre-loaded with cleaned data and ready for exploration.
 
 **Insights Gained**
+
 Lower video completion rates were observed for pre-recorded sessions.
 
 Viewing patterns vary significantly across weekdays and study programs.
@@ -64,6 +66,7 @@ Shorter video lengths often correlated with higher completion.
 Some sessions had particularly high or low engagement, highlighting areas for pedagogical improvement.
 
 **Tools Used**
+
 Alteryx Designer (for data wrangling and transformation)
 
 Tableau Desktop (for data visualization and dashboarding)
